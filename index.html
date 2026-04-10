@@ -1,1 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Самотканов Павел — видеосъёмка выпускных</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    background: #0a0a0a;
+    color: #f5f5f5;
+    font-family: 'Inter', sans-serif;
+}
+
+section {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+h1, h2 {
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.hero video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+.hero-content {
+    position: relative;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 72px;
+}
+
+.hero p {
+    opacity: 0.7;
+}
+
+.btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+}
+
+.split {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.text {
+    width: 50%;
+    padding: 80px;
+    font-size: 32px;
+}
+
+.image {
+    width: 50%;
+    background-size: cover;
+    background-position: center;
+}
+
+.pricing {
+    text-align: center;
+    font-size: 24px;
+    line-height: 1.8;
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+    <video autoplay muted loop>
+        <source src="https://cdn.coverr.co/videos/coverr-dancing-couple-1575/1080p.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+    <div class="hero-content">
+        <h1>Самотканов Павел</h1>
+        <p>Видеосъёмка выпускных</p>
+        <button class="btn">Смотреть фильм</button>
+    </div>
+</section>
+
+<section class="split">
+    <div class="text">
+        Я снимаю не выпускной.<br>
+        Я снимаю момент,<br>
+        который больше не повторится.
+    </div>
+    <div class="image" style="background-image:url('https://images.unsplash.com/photo-1529336953121-ad5a0d43d0d2');"></div>
+</section>
+
+<section class="pricing">
+    БАЗОВЫЙ — 30 000<br>
+    4 часа съёмки<br>
+    Фильм 3–5 минут<br><br>
+
+    СТАНДАРТ — 40 000<br>
+    4 часа съёмки<br>
+    Фильм 4–7 минут<br>
+    5–10 коротких клипов<br><br>
+
+    ПРЕМИУМ — 50 000<br>
+    Весь день съёмки<br>
+    Фильм до 10 минут<br>
+    10–15 клипов + интервью
+</section>
+
+</body>
+</html>
