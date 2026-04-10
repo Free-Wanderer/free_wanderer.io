@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Самотканов Павел — видеосъёмка выпускных</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Orbitron:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 body {
@@ -15,20 +15,15 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+/* ===== 16:9 СЕКЦИИ ===== */
 section {
     width: 100%;
     aspect-ratio: 16/9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
     overflow: hidden;
 }
 
-h1, h2 {
-    font-family: 'Cormorant Garamond', serif;
-}
-
+/* ===== HERO ===== */
 .hero video {
     position: absolute;
     width: 100%;
@@ -38,65 +33,131 @@ h1, h2 {
 
 .overlay {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: rgba(0,0,0,0.5);
 }
 
 .hero-content {
-    position: relative;
-    text-align: center;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
 }
 
 .hero h1 {
-    font-size: 72px;
+    font-size: clamp(40px, 6vw, 80px);
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: -0.02em;
 }
 
 .hero p {
-    opacity: 0.7;
+    opacity: 0.6;
+    margin-top: 10px;
 }
 
 .btn {
-    margin-top: 20px;
-    padding: 12px 24px;
-    border: 1px solid white;
+    margin-top: 25px;
+    padding: 12px 28px;
+    border: 1px solid rgba(255,255,255,0.4);
     background: transparent;
     color: white;
+    cursor: pointer;
 }
+
+/* ===== MANIFEST BLOCK ===== */
 
 .split {
-    display: flex;
-    width: 100%;
-    height: 100%;
+    position: relative;
 }
 
-.text {
-    width: 50%;
-    padding: 80px;
-    font-size: 32px;
-}
-
-.image {
-    width: 50%;
+/* Фон */
+.split .image {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1600&q=80');
     background-size: cover;
     background-position: center;
+    filter: brightness(0.7);
 }
 
+/* затемнение */
+.split::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
+}
+
+/* текст */
+.text {
+    position: relative;
+    z-index: 2;
+    width: 50%;
+    padding: 6vw;
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(28px, 3vw, 54px);
+    line-height: 1.05;
+}
+
+/* тонкие линии */
+.line {
+    position: absolute;
+    background: rgba(255,255,255,0.15);
+}
+
+.line.h1 {
+    height: 1px;
+    width: 180px;
+    top: 20%;
+    left: 8%;
+}
+
+.line.h2 {
+    height: 1px;
+    width: 120px;
+    bottom: 25%;
+    left: 12%;
+}
+
+.line.v1 {
+    width: 1px;
+    height: 120px;
+    top: 35%;
+    left: 5%;
+}
+
+/* ===== PRICING ===== */
+
 .pricing {
-    text-align: center;
-    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 6vw;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
     line-height: 1.8;
 }
+
+.price-title {
+    font-size: 26px;
+    margin-top: 20px;
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- HERO -->
 <section class="hero">
     <video autoplay muted loop>
         <source src="https://cdn.coverr.co/videos/coverr-dancing-couple-1575/1080p.mp4" type="video/mp4">
     </video>
     <div class="overlay"></div>
+
     <div class="hero-content">
         <h1>Самотканов Павел</h1>
         <p>Видеосъёмка выпускных</p>
@@ -104,29 +165,39 @@ h1, h2 {
     </div>
 </section>
 
+<!-- MANIFEST -->
 <section class="split">
+    <div class="image"></div>
+
+    <!-- линии -->
+    <div class="line h1"></div>
+    <div class="line h2"></div>
+    <div class="line v1"></div>
+
     <div class="text">
         Я снимаю не выпускной.<br>
         Я снимаю момент,<br>
         который больше не повторится.
     </div>
-    <div class="image" style="background-image:url('https://images.unsplash.com/photo-1529336953121-ad5a0d43d0d2');"></div>
 </section>
 
+<!-- PRICING -->
 <section class="pricing">
-    БАЗОВЫЙ — 30 000<br>
+    
+    <div class="price-title">БАЗОВЫЙ — 30 000</div>
     4 часа съёмки<br>
-    Фильм 3–5 минут<br><br>
+    Фильм 3–5 минут
 
-    СТАНДАРТ — 40 000<br>
+    <div class="price-title">СТАНДАРТ — 40 000</div>
     4 часа съёмки<br>
     Фильм 4–7 минут<br>
-    5–10 коротких клипов<br><br>
+    5–10 коротких клипов
 
-    ПРЕМИУМ — 50 000<br>
-    Весь день съёмки<br>
+    <div class="price-title">ПРЕМИУМ — 50 000</div>
+    Съёмка всего мероприятия<br>
     Фильм до 10 минут<br>
     10–15 клипов + интервью
+
 </section>
 
 </body>
