@@ -5,20 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Самотканов Павел — видеосъёмка выпускных</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
-
   <style>
+    @font-face {
+      font-family: 'TitleFont';
+      src: url('fonts/Colatemta-9Y9XB.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'ManifestFont';
+      src: url('fonts/Horovod-Regular.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
     :root {
       --bg: #070707;
-      --panel: #0d0d0d;
       --text: #f3f1ec;
       --muted: rgba(243, 241, 236, 0.68);
       --line: rgba(243, 241, 236, 0.14);
       --line-strong: rgba(243, 241, 236, 0.22);
-      --orange: #d78a2f;
-      --wine: #7f1f2e;
+      --orange: #c97a2d;
+      --wine: #7d1f31;
     }
 
     * {
@@ -30,8 +39,9 @@
       padding: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: 'Inter', sans-serif;
+      font-family: Arial, sans-serif;
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
     body {
@@ -51,7 +61,44 @@
       text-decoration: none;
     }
 
-    /* ================= HERO ================= */
+    /* ================= ANIMATIONS ================= */
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInSoft {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .animate-up {
+      opacity: 0;
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .animate-soft {
+      opacity: 0;
+      animation: fadeInSoft 1.2s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.15s; }
+    .delay-2 { animation-delay: 0.35s; }
+    .delay-3 { animation-delay: 0.55s; }
+    .delay-4 { animation-delay: 0.75s; }
+
+    /* ================= 1 BLOCK / HERO ================= */
 
     .hero {
       aspect-ratio: 16 / 9;
@@ -74,8 +121,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to bottom, rgba(0,0,0,0.32), rgba(0,0,0,0.62)),
-        linear-gradient(to right, rgba(0,0,0,0.20), rgba(0,0,0,0.20));
+        linear-gradient(to bottom, rgba(0,0,0,0.30), rgba(0,0,0,0.65)),
+        linear-gradient(to right, rgba(0,0,0,0.18), rgba(0,0,0,0.18));
       z-index: 1;
     }
 
@@ -111,13 +158,13 @@
 
     .hero h1 {
       margin: 0;
-      font-family: 'Syncopate', sans-serif;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: -0.05em;
+      font-family: 'TitleFont', sans-serif;
+      font-weight: normal;
+      font-size: clamp(40px, 6vw, 96px);
       line-height: 0.96;
-      font-size: clamp(32px, 5.8vw, 92px);
       color: var(--orange);
+      letter-spacing: 0.02em;
+      text-transform: none;
     }
 
     .hero p {
@@ -125,6 +172,7 @@
       color: var(--muted);
       font-size: clamp(14px, 1.2vw, 18px);
       letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
     .hero-button {
@@ -146,7 +194,7 @@
       border-color: rgba(255,255,255,0.5);
     }
 
-    /* ================= MANIFEST ================= */
+    /* ================= 2 BLOCK / MANIFEST ================= */
 
     .manifest {
       aspect-ratio: 16 / 9;
@@ -242,14 +290,11 @@
 
     .manifest-text {
       margin: 0;
-      font-family: 'Syncopate', sans-serif;
-      font-weight: 400;
-      text-transform: uppercase;
-      font-size: clamp(30px, 4vw, 66px);
+      font-family: 'ManifestFont', sans-serif;
+      font-weight: normal;
+      font-size: clamp(36px, 4.2vw, 72px);
       line-height: 1.02;
-      letter-spacing: -0.045em;
-      max-width: 11ch;
-      text-wrap: balance;
+      max-width: 10.5ch;
       color: var(--wine);
     }
 
@@ -261,7 +306,7 @@
       color: rgba(243, 241, 236, 0.66);
     }
 
-    /* ================= PRICING ================= */
+    /* ================= 3 BLOCK / PRICING ================= */
 
     .pricing {
       aspect-ratio: 16 / 9;
@@ -322,11 +367,10 @@
 
     .price-name {
       margin: 0 0 12px;
-      font-family: 'Syncopate', sans-serif;
-      font-size: clamp(16px, 1.2vw, 20px);
-      text-transform: uppercase;
+      font-family: 'TitleFont', sans-serif;
+      font-size: clamp(20px, 1.5vw, 28px);
       line-height: 1.1;
-      letter-spacing: -0.04em;
+      color: var(--text);
     }
 
     .price-value {
@@ -353,7 +397,7 @@
       color: rgba(243, 241, 236, 0.48);
     }
 
-    /* ================= SHOWREEL ================= */
+    /* ================= 4 BLOCK / SHOWREEL ================= */
 
     .showreel {
       aspect-ratio: 16 / 9;
@@ -366,7 +410,7 @@
       background-image: url('reel-bg.jpg');
       background-size: cover;
       background-position: center;
-      filter: blur(26px) grayscale(100%) brightness(0.2);
+      filter: blur(28px) grayscale(100%) brightness(0.18);
       transform: scale(1.14);
     }
 
@@ -374,7 +418,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to bottom, rgba(0,0,0,0.56), rgba(0,0,0,0.78)),
+        linear-gradient(to bottom, rgba(0,0,0,0.58), rgba(0,0,0,0.80)),
         linear-gradient(to right, rgba(0,0,0,0.18), rgba(0,0,0,0.18));
     }
 
@@ -408,15 +452,16 @@
       letter-spacing: 0.28em;
       color: var(--muted);
       margin-bottom: 14px;
+      text-align: center;
     }
 
     .showreel-title {
       margin: 0;
-      font-family: 'Syncopate', sans-serif;
-      font-size: clamp(28px, 2.8vw, 52px);
+      font-family: 'TitleFont', sans-serif;
+      font-size: clamp(30px, 3vw, 56px);
       line-height: 1;
-      text-transform: uppercase;
-      letter-spacing: -0.05em;
+      color: var(--text);
+      text-align: center;
     }
 
     .showreel-grid {
@@ -495,11 +540,10 @@
     }
 
     .video-name {
-      font-family: 'Syncopate', sans-serif;
+      font-family: 'TitleFont', sans-serif;
       font-size: 14px;
-      text-transform: uppercase;
       line-height: 1.15;
-      letter-spacing: -0.03em;
+      color: var(--text);
     }
 
     .v1 {
@@ -637,7 +681,7 @@
 
       .manifest-text {
         max-width: none;
-        font-size: clamp(26px, 8vw, 42px);
+        font-size: clamp(34px, 9vw, 52px);
       }
 
       .showreel-inner {
@@ -655,11 +699,16 @@
       .showreel-cta {
         margin-top: 16px;
       }
+
+      .hero h1 {
+        font-size: clamp(34px, 12vw, 56px);
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- 1 BLOCK -->
   <section class="hero">
     <video autoplay muted loop playsinline>
       <source src="https://cdn.coverr.co/videos/coverr-dancing-couple-1575/1080p.mp4" type="video/mp4">
@@ -669,13 +718,14 @@
     <div class="hero-line-bottom"></div>
 
     <div class="hero-content">
-      <div class="hero-kicker">Graduation Films</div>
-      <h1>Самотканов Павел</h1>
-      <p>Видеосъёмка выпускных</p>
-      <a href="#" class="hero-button">Смотреть фильм</a>
+      <div class="hero-kicker animate-up">Graduation Films</div>
+      <h1 class="animate-up delay-1">Самотканов Павел</h1>
+      <p class="animate-up delay-2">Видеосъёмка выпускных</p>
+      <a href="#" class="hero-button animate-up delay-3">Смотреть фильм</a>
     </div>
   </section>
 
+  <!-- 2 BLOCK -->
   <section class="manifest">
     <div class="manifest-bg"></div>
     <div class="manifest-overlay"></div>
@@ -685,36 +735,37 @@
       <div class="manifest-line-top"></div>
       <div class="manifest-line-left"></div>
       <div class="manifest-line-bottom"></div>
-      <div class="manifest-meta">Editorial Block / 01</div>
+      <div class="manifest-meta animate-soft delay-1">Editorial Block / 01</div>
 
       <div class="manifest-text-wrap">
-        <div class="manifest-kicker">Manifest</div>
-        <h2 class="manifest-text">
-          Я снимаю не выпускной.
-          Я снимаю момент,
-          который больше не повторится.
+        <div class="manifest-kicker animate-up">Manifest</div>
+        <h2 class="manifest-text animate-up delay-1">
+          Я снимаю не выпускной<br>
+          Я снимаю момент<br>
+          который больше не повторится
         </h2>
-        <div class="manifest-sub">
+        <div class="manifest-sub animate-up delay-2">
           Не просто событие, а состояние, эмоцию и ту самую секунду, к которой захочется возвращаться спустя годы.
         </div>
       </div>
     </div>
   </section>
 
+  <!-- 3 BLOCK -->
   <section class="pricing">
     <div class="price-column">
       <div class="price-bg" style="background-image: url('price1.jpg');"></div>
       <div class="price-dark"></div>
       <div class="price-inner">
         <div class="price-topline"></div>
-        <h3 class="price-name">Базовый</h3>
-        <div class="price-value">30 000</div>
-        <div class="price-list">
+        <h3 class="price-name animate-up">Базовый</h3>
+        <div class="price-value animate-up delay-1">30 000</div>
+        <div class="price-list animate-up delay-2">
           <div>4 часа съёмки</div>
           <div>Фильм 3–5 минут</div>
           <div>Передача исходников</div>
         </div>
-        <div class="price-ready">Готовность — 10 дней</div>
+        <div class="price-ready animate-up delay-3">Готовность — 10 дней</div>
       </div>
     </div>
 
@@ -723,14 +774,14 @@
       <div class="price-dark"></div>
       <div class="price-inner">
         <div class="price-topline"></div>
-        <h3 class="price-name">Стандарт</h3>
-        <div class="price-value">40 000</div>
-        <div class="price-list">
+        <h3 class="price-name animate-up">Стандарт</h3>
+        <div class="price-value animate-up delay-1">40 000</div>
+        <div class="price-list animate-up delay-2">
           <div>4 часа съёмки</div>
           <div>Фильм 4–7 минут</div>
           <div>5–10 коротких роликов для соцсетей</div>
         </div>
-        <div class="price-ready">Готовность — 10 дней</div>
+        <div class="price-ready animate-up delay-3">Готовность — 10 дней</div>
       </div>
     </div>
 
@@ -739,19 +790,20 @@
       <div class="price-dark"></div>
       <div class="price-inner">
         <div class="price-topline"></div>
-        <h3 class="price-name">Премиум</h3>
-        <div class="price-value">50 000</div>
-        <div class="price-list">
+        <h3 class="price-name animate-up">Премиум</h3>
+        <div class="price-value animate-up delay-1">50 000</div>
+        <div class="price-list animate-up delay-2">
           <div>Съёмка всего мероприятия</div>
           <div>Фильм до 10 минут</div>
           <div>10–15 роликов для соцсетей</div>
           <div>Интервью</div>
         </div>
-        <div class="price-ready">Готовность — 10 дней</div>
+        <div class="price-ready animate-up delay-3">Готовность — 10 дней</div>
       </div>
     </div>
   </section>
 
+  <!-- 4 BLOCK -->
   <section class="showreel">
     <div class="showreel-bg"></div>
     <div class="showreel-overlay"></div>
@@ -760,8 +812,8 @@
       <div class="showreel-frame"></div>
 
       <div class="showreel-head">
-        <div class="showreel-kicker">Showreel</div>
-        <h2 class="showreel-title">ВАША ИСТОРИЯ ВПЕРЕДИ</h2>
+        <div class="showreel-kicker animate-up">Showreel</div>
+        <h2 class="showreel-title animate-up delay-1">ВАША ИСТОРИЯ ВПЕРЕДИ</h2>
       </div>
 
       <div class="showreel-grid">
@@ -798,7 +850,7 @@
         </a>
 
         <a class="video-card h2" href="#" target="_blank">
-          <div class="video-thumb" style="background-image: url('reel-bg.jpg');"></div>
+          <div class="video-thumb" style="background-image: url('grad-bg.jpg');"></div>
           <div class="video-play"></div>
           <div class="video-info">
             <div class="video-name">Лучшие моменты</div>
@@ -806,7 +858,7 @@
         </a>
       </div>
 
-      <div class="showreel-cta">
+      <div class="showreel-cta animate-up delay-2">
         <a class="cta-button" href="https://t.me/samotkanov_pavel" target="_blank">Записаться на съёмку</a>
       </div>
     </div>
