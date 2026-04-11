@@ -14,15 +14,15 @@
     }
 
     @font-face {
-      font-family: 'SubtitleHeroFont';
-      src: url('fonts/Sexsmith.otf') format('opentype');
+      font-family: 'SouthGhettoFont';
+      src: url('fonts/SOUTHGHETTO.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
     }
 
     @font-face {
-      font-family: 'ManifestArtFont';
-      src: url('fonts/SOUTHGHETTO.ttf') format('truetype');
+      font-family: 'SexsmithFont';
+      src: url('fonts/Sexsmith.otf') format('opentype');
       font-weight: normal;
       font-style: normal;
     }
@@ -36,13 +36,15 @@
 
     :root {
       --bg: #070707;
+      --bg-soft: #0a0a0a;
       --text: #f3f1ec;
       --muted: rgba(243, 241, 236, 0.68);
-      --line: rgba(243, 241, 236, 0.14);
+      --line: rgba(243, 241, 236, 0.12);
       --line-strong: rgba(243, 241, 236, 0.22);
       --orange: #c97a2d;
-      --orange-deep: #a55f1c;
-      --wine: #7d1f31;
+      --orange-deep: #a5601f;
+      --wine: #8b2137;
+      --shadow: 0 18px 48px rgba(0,0,0,0.34);
     }
 
     * {
@@ -72,7 +74,7 @@
       min-height: 100vh;
       position: relative;
       overflow: hidden;
-      background: #080808;
+      background: var(--bg-soft);
     }
 
     a {
@@ -96,12 +98,8 @@
     }
 
     @keyframes fadeInSoft {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     .animate-up {
@@ -142,8 +140,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to bottom, rgba(0,0,0,0.28), rgba(0,0,0,0.72)),
-        linear-gradient(to right, rgba(0,0,0,0.16), rgba(0,0,0,0.16));
+        linear-gradient(to bottom, rgba(0,0,0,0.24), rgba(0,0,0,0.72)),
+        linear-gradient(to right, rgba(0,0,0,0.15), rgba(0,0,0,0.15));
       z-index: 1;
     }
 
@@ -177,7 +175,7 @@
       letter-spacing: 0.35em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 28px;
+      margin-bottom: 26px;
     }
 
     .hero h1 {
@@ -185,10 +183,10 @@
       max-width: 100%;
       font-family: 'HeroNameFont', sans-serif;
       font-weight: normal;
-      font-size: clamp(52px, 6vw, 106px);
+      font-size: clamp(54px, 6vw, 106px);
       line-height: 0.9;
       color: var(--orange-deep);
-      letter-spacing: 0.02em;
+      letter-spacing: 0.015em;
       text-transform: uppercase;
       text-align: center;
       white-space: nowrap;
@@ -196,33 +194,38 @@
     }
 
     .hero p {
-      margin: 26px 0 0;
+      margin: 24px 0 0;
       color: var(--text);
-      font-size: clamp(30px, 3vw, 54px);
+      font-size: clamp(32px, 3vw, 54px);
+      line-height: 0.98;
       letter-spacing: 0.01em;
-      line-height: 1;
-      font-family: 'SubtitleHeroFont', sans-serif;
+      font-family: 'SouthGhettoFont', sans-serif;
       text-align: center;
       text-transform: none;
     }
 
-    .hero-button {
+    .hero-button,
+    .cta-button {
       display: inline-block;
-      margin-top: 34px;
-      padding: 14px 28px;
-      border: 1px solid rgba(255,255,255,0.34);
-      background: rgba(255,255,255,0.03);
+      padding: 15px 30px;
+      border: 1px solid rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.04);
       color: var(--text);
       text-transform: uppercase;
       font-size: 12px;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.16em;
       transition: 0.25s ease;
       backdrop-filter: blur(8px);
     }
 
-    .hero-button:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.5);
+    .hero-button {
+      margin-top: 34px;
+    }
+
+    .hero-button:hover,
+    .cta-button:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.44);
       transform: translateY(-2px);
     }
 
@@ -247,7 +250,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to right, rgba(6,6,6,0.88) 0%, rgba(6,6,6,0.54) 36%, rgba(6,6,6,0.20) 65%, rgba(6,6,6,0.46) 100%),
+        linear-gradient(to right, rgba(6,6,6,0.88) 0%, rgba(6,6,6,0.56) 36%, rgba(6,6,6,0.22) 65%, rgba(6,6,6,0.48) 100%),
         linear-gradient(to bottom, rgba(0,0,0,0.18), rgba(0,0,0,0.36));
     }
 
@@ -322,9 +325,9 @@
 
     .manifest-text {
       margin: 0;
-      font-family: 'ManifestArtFont', sans-serif;
+      font-family: 'SexsmithFont', sans-serif;
       font-weight: normal;
-      font-size: clamp(34px, 4vw, 70px);
+      font-size: clamp(42px, 4.2vw, 74px);
       line-height: 1.02;
       max-width: 11ch;
       color: var(--wine);
@@ -335,7 +338,7 @@
       max-width: 560px;
       font-family: 'GatchinaFont', sans-serif;
       font-size: 24px;
-      line-height: 1.45;
+      line-height: 1.46;
       color: rgba(243, 241, 236, 0.84);
     }
 
@@ -385,7 +388,7 @@
       z-index: 2;
       width: 100%;
       max-width: 360px;
-      padding: 34px 24px;
+      padding: 36px 24px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -420,7 +423,7 @@
       color: rgba(243, 241, 236, 0.86);
       font-family: 'GatchinaFont', sans-serif;
       font-size: 20px;
-      line-height: 1.4;
+      line-height: 1.42;
       justify-items: center;
     }
 
@@ -512,7 +515,7 @@
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.1);
       background: rgba(255,255,255,0.02);
-      box-shadow: 0 18px 48px rgba(0,0,0,0.34);
+      box-shadow: var(--shadow);
       transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
       backdrop-filter: blur(4px);
       cursor: pointer;
@@ -636,26 +639,7 @@
       justify-content: center;
     }
 
-    .cta-button {
-      display: inline-block;
-      padding: 16px 30px;
-      border: 1px solid rgba(255,255,255,0.28);
-      background: rgba(255,255,255,0.05);
-      color: var(--text);
-      text-transform: uppercase;
-      font-size: 12px;
-      letter-spacing: 0.18em;
-      transition: 0.25s ease;
-      backdrop-filter: blur(8px);
-    }
-
-    .cta-button:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: rgba(255,255,255,0.44);
-      transform: translateY(-2px);
-    }
-
-    /* ================= VIDEO MODAL ================= */
+    /* ================= MODAL ================= */
 
     .video-modal {
       position: fixed;
@@ -783,7 +767,7 @@
       }
 
       .price-column {
-        min-height: 60vh;
+        min-height: 62vh;
         border-left: none;
         border-top: 1px solid rgba(255,255,255,0.08);
       }
@@ -811,18 +795,22 @@
     /* ================= MOBILE ================= */
 
     @media (max-width: 760px) {
-      .hero,
-      .showreel {
-        aspect-ratio: auto;
+      section {
+        min-height: auto;
+      }
+
+      .hero {
         min-height: 100svh;
+        aspect-ratio: auto;
       }
 
       .manifest {
+        min-height: auto;
         aspect-ratio: auto;
-        min-height: 72svh;
       }
 
-      .pricing {
+      .pricing,
+      .showreel {
         aspect-ratio: auto;
       }
 
@@ -844,20 +832,20 @@
 
       .hero-content {
         width: 100%;
-        padding: 92px 22px 40px;
+        padding: 96px 22px 42px;
         min-height: 100svh;
         justify-content: center;
       }
 
       .hero-kicker {
-        margin-bottom: 22px;
+        margin-bottom: 18px;
         font-size: 10px;
         letter-spacing: 0.28em;
       }
 
       .hero h1 {
         white-space: normal;
-        max-width: 290px;
+        max-width: 300px;
         font-size: clamp(34px, 14vw, 58px);
         line-height: 0.92;
         letter-spacing: 0.01em;
@@ -865,14 +853,14 @@
 
       .hero p {
         margin-top: 18px;
-        max-width: 290px;
-        font-size: clamp(30px, 10vw, 40px);
+        max-width: 300px;
+        font-size: clamp(28px, 9.5vw, 40px);
         line-height: 0.95;
       }
 
       .hero-button {
         margin-top: 26px;
-        width: min(300px, 100%);
+        width: min(320px, 100%);
         text-align: center;
         padding: 18px 18px;
         font-size: 12px;
@@ -880,15 +868,14 @@
       }
 
       .manifest-frame {
-        inset: 18px;
+        inset: 16px;
       }
 
       .manifest-inner {
         width: 100%;
-        padding: 22px 18px 28px;
-        min-height: 72svh;
-        display: flex;
-        align-items: flex-start;
+        padding: 24px 16px 30px;
+        min-height: auto;
+        display: block;
       }
 
       .manifest-text-wrap {
@@ -900,8 +887,8 @@
         transform: none;
         max-width: none;
         width: 100%;
-        padding: 18px 16px 20px;
-        margin-top: 24px;
+        padding: 22px 18px 26px;
+        margin-top: 18px;
       }
 
       .manifest-kicker {
@@ -910,8 +897,8 @@
 
       .manifest-text {
         max-width: none;
-        font-size: clamp(28px, 8.6vw, 42px);
-        line-height: 1.06;
+        font-size: clamp(32px, 9vw, 44px);
+        line-height: 1.02;
       }
 
       .manifest-sub {
@@ -921,29 +908,19 @@
         max-width: none;
       }
 
-      .showreel-frame {
-        inset: 18px;
-      }
-
-      .showreel-bg {
-        filter: blur(16px) grayscale(100%) brightness(0.34);
-        transform: scale(1.08);
-      }
-
-      .showreel-inner {
-        padding: 28px 18px 24px;
-      }
-
-      .showreel-grid {
+      .pricing {
+        display: grid;
         grid-template-columns: 1fr;
       }
 
-      .video-card {
-        height: 240px !important;
+      .price-column {
+        min-height: 52svh;
+        border-left: none;
+        border-top: 1px solid rgba(255,255,255,0.08);
       }
 
-      .showreel-cta {
-        margin-top: 16px;
+      .price-column:first-child {
+        border-top: none;
       }
 
       .price-inner {
@@ -958,6 +935,55 @@
       .price-list {
         font-size: 21px;
         line-height: 1.38;
+      }
+
+      .showreel {
+        min-height: auto;
+      }
+
+      .showreel-frame {
+        inset: 16px;
+      }
+
+      .showreel-bg {
+        filter: blur(16px) grayscale(100%) brightness(0.34);
+        transform: scale(1.08);
+      }
+
+      .showreel-inner {
+        padding: 28px 16px 24px;
+      }
+
+      .showreel-head {
+        margin-bottom: 20px;
+      }
+
+      .showreel-title {
+        font-size: clamp(28px, 8vw, 42px);
+      }
+
+      .showreel-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        min-height: 0;
+      }
+
+      .video-card {
+        position: relative;
+        inset: auto !important;
+        width: 100% !important;
+        height: 220px !important;
+      }
+
+      .showreel-cta {
+        margin-top: 16px;
+      }
+
+      .cta-button {
+        width: min(320px, 100%);
+        text-align: center;
+        padding: 18px 18px;
       }
 
       .video-modal {
@@ -988,226 +1014,4 @@
       <source src="hero-video.mp4" type="video/mp4">
     </video>
 
-    <div class="hero-line-top"></div>
-    <div class="hero-line-bottom"></div>
-
-    <div class="hero-content">
-      <div class="hero-kicker animate-up">Graduation Films</div>
-      <h1 class="animate-up delay-1">САМОТКАНОВ ПАВЕЛ</h1>
-      <p class="animate-up delay-2">Видеосъёмка выпускных</p>
-      <a href="https://t.me/samotkanov_pavel" target="_blank" class="hero-button animate-up delay-3">Забронировать</a>
-    </div>
-  </section>
-
-  <section class="manifest">
-    <div class="manifest-bg"></div>
-    <div class="manifest-overlay"></div>
-
-    <div class="manifest-inner">
-      <div class="manifest-frame"></div>
-      <div class="manifest-line-top"></div>
-      <div class="manifest-line-left"></div>
-      <div class="manifest-line-bottom"></div>
-      <div class="manifest-meta animate-soft delay-1">Editorial Block / 01</div>
-
-      <div class="manifest-text-wrap">
-        <div class="manifest-kicker animate-up">Manifest</div>
-        <h2 class="manifest-text animate-up delay-1">
-          Я снимаю не выпускной<br>
-          Я снимаю момент,<br>
-          который больше не повторится
-        </h2>
-        <div class="manifest-sub animate-up delay-2">
-          Не просто праздник, а живые эмоции и воспоминание, к которому захочется возвращаться снова.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="pricing">
-    <div class="price-column">
-      <div class="price-bg" style="background-image: url('price1.jpg');"></div>
-      <div class="price-dark"></div>
-      <div class="price-inner">
-        <div class="price-topline"></div>
-        <h3 class="price-name animate-up">Базовый</h3>
-        <div class="price-value animate-up delay-1">30 000</div>
-        <div class="price-list animate-up delay-2">
-          <div>4 часа съёмки</div>
-          <div>Фильм 3–5 минут</div>
-          <div>Передача исходников</div>
-        </div>
-        <div class="price-ready animate-up delay-3">Готовность — 10 дней</div>
-      </div>
-    </div>
-
-    <div class="price-column">
-      <div class="price-bg" style="background-image: url('price2.jpg');"></div>
-      <div class="price-dark"></div>
-      <div class="price-inner">
-        <div class="price-topline"></div>
-        <h3 class="price-name animate-up">Стандарт</h3>
-        <div class="price-value animate-up delay-1">40 000</div>
-        <div class="price-list animate-up delay-2">
-          <div>4 часа съёмки</div>
-          <div>Фильм 4–7 минут</div>
-          <div>5–10 коротких роликов для соцсетей</div>
-        </div>
-        <div class="price-ready animate-up delay-3">Готовность — 10 дней</div>
-      </div>
-    </div>
-
-    <div class="price-column">
-      <div class="price-bg" style="background-image: url('price3.jpg');"></div>
-      <div class="price-dark"></div>
-      <div class="price-inner">
-        <div class="price-topline"></div>
-        <h3 class="price-name animate-up">Премиум</h3>
-        <div class="price-value animate-up delay-1">50 000</div>
-        <div class="price-list animate-up delay-2">
-          <div>Съёмка всего мероприятия</div>
-          <div>Фильм до 10 минут</div>
-          <div>10–15 роликов для соцсетей</div>
-          <div>Интервью</div>
-        </div>
-        <div class="price-ready animate-up delay-3">Готовность — 10 дней</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="showreel">
-    <div class="showreel-bg"></div>
-    <div class="showreel-overlay"></div>
-
-    <div class="showreel-inner">
-      <div class="showreel-frame"></div>
-
-      <div class="showreel-head">
-        <div class="showreel-kicker animate-up">Showreel</div>
-        <h2 class="showreel-title animate-up delay-1">ВАША ИСТОРИЯ ВПЕРЕДИ</h2>
-      </div>
-
-      <div class="showreel-grid">
-        <a class="video-card v1 js-video-trigger" href="#" data-video="hero-video.mp4" data-title="Выпускной вечер">
-          <div class="video-thumb" style="background-image: url('price1.jpg');"></div>
-          <div class="video-play"></div>
-          <div class="video-info">
-            <div class="video-name">Выпускной вечер</div>
-          </div>
-        </a>
-
-        <a class="video-card v2 js-video-trigger" href="#" data-video="hero-video.mp4" data-title="Эмоции гостей">
-          <div class="video-thumb" style="background-image: url('price2.jpg');"></div>
-          <div class="video-play"></div>
-          <div class="video-info">
-            <div class="video-name">Эмоции гостей</div>
-          </div>
-        </a>
-
-        <a class="video-card v3 js-video-trigger" href="#" data-video="hero-video.mp4" data-title="Ночной репортаж">
-          <div class="video-thumb" style="background-image: url('price3.jpg');"></div>
-          <div class="video-play"></div>
-          <div class="video-info">
-            <div class="video-name">Ночной репортаж</div>
-          </div>
-        </a>
-
-        <a class="video-card h1 js-video-trigger" href="#" data-video="hero-video.mp4" data-title="Фильм о выпускных">
-          <div class="video-thumb" style="background-image: url('grad-bg.jpg');"></div>
-          <div class="video-play"></div>
-          <div class="video-info">
-            <div class="video-name">Фильм о выпускных</div>
-          </div>
-        </a>
-
-        <a class="video-card h2 js-video-trigger" href="#" data-video="hero-video.mp4" data-title="Лучшие моменты">
-          <div class="video-thumb" style="background-image: url('price2.jpg');"></div>
-          <div class="video-play"></div>
-          <div class="video-info">
-            <div class="video-name">Лучшие моменты</div>
-          </div>
-        </a>
-      </div>
-
-      <div class="showreel-cta animate-up delay-2">
-        <a class="cta-button" href="https://t.me/samotkanov_pavel" target="_blank">Записаться на съёмку</a>
-      </div>
-    </div>
-  </section>
-
-  <div class="video-modal" id="videoModal" aria-hidden="true">
-    <div class="video-modal-backdrop" id="videoModalBackdrop"></div>
-
-    <div class="video-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
-      <button class="video-modal-close" id="videoModalClose" aria-label="Закрыть видео"></button>
-
-      <div class="video-modal-media">
-        <video id="modalVideo" controls playsinline preload="metadata">
-          <source id="modalVideoSource" src="" type="video/mp4">
-        </video>
-      </div>
-
-      <div class="video-modal-caption">
-        <div class="video-modal-label">Showreel</div>
-        <h3 class="video-modal-title" id="videoModalTitle">Видео</h3>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const modal = document.getElementById('videoModal');
-    const modalBackdrop = document.getElementById('videoModalBackdrop');
-    const modalClose = document.getElementById('videoModalClose');
-    const modalVideo = document.getElementById('modalVideo');
-    const modalVideoSource = document.getElementById('modalVideoSource');
-    const modalTitle = document.getElementById('videoModalTitle');
-    const videoTriggers = document.querySelectorAll('.js-video-trigger');
-
-    function openVideoModal(videoSrc, titleText) {
-      modalVideo.pause();
-      modalVideoSource.src = videoSrc;
-      modalTitle.textContent = titleText || 'Видео';
-      modalVideo.load();
-
-      modal.classList.add('is-open');
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.classList.add('modal-open');
-
-      const playPromise = modalVideo.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {});
-      }
-    }
-
-    function closeVideoModal() {
-      modal.classList.remove('is-open');
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.classList.remove('modal-open');
-
-      modalVideo.pause();
-      modalVideo.currentTime = 0;
-      modalVideoSource.src = '';
-      modalVideo.load();
-    }
-
-    videoTriggers.forEach((trigger) => {
-      trigger.addEventListener('click', (event) => {
-        event.preventDefault();
-        const videoSrc = trigger.dataset.video;
-        const titleText = trigger.dataset.title;
-        openVideoModal(videoSrc, titleText);
-      });
-    });
-
-    modalClose.addEventListener('click', closeVideoModal);
-    modalBackdrop.addEventListener('click', closeVideoModal);
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && modal.classList.contains('is-open')) {
-        closeVideoModal();
-      }
-    });
-  </script>
-
-</body>
-</html>
+    <
