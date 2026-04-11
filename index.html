@@ -84,8 +84,6 @@
       font: inherit;
     }
 
-    /* ================= ANIMATIONS ================= */
-
     @keyframes fadeUp {
       from {
         opacity: 0;
@@ -121,7 +119,7 @@
     .delay-3 { animation-delay: 0.55s; }
     .delay-4 { animation-delay: 0.75s; }
 
-    /* ================= 1 BLOCK / HERO ================= */
+    /* ================= HERO ================= */
 
     .hero {
       aspect-ratio: 16 / 9;
@@ -144,8 +142,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to bottom, rgba(0,0,0,0.34), rgba(0,0,0,0.74)),
-        linear-gradient(to right, rgba(0,0,0,0.22), rgba(0,0,0,0.22));
+        linear-gradient(to bottom, rgba(0,0,0,0.28), rgba(0,0,0,0.72)),
+        linear-gradient(to right, rgba(0,0,0,0.16), rgba(0,0,0,0.16));
       z-index: 1;
     }
 
@@ -204,7 +202,6 @@
       letter-spacing: 0.01em;
       line-height: 1.05;
       font-family: 'SubtitleFont', sans-serif;
-      text-transform: none;
       text-align: center;
     }
 
@@ -228,7 +225,7 @@
       transform: translateY(-2px);
     }
 
-    /* ================= 2 BLOCK / MANIFEST ================= */
+    /* ================= MANIFEST ================= */
 
     .manifest {
       aspect-ratio: 16 / 9;
@@ -241,7 +238,7 @@
       background-image: url('grad-bg.jpg');
       background-size: cover;
       background-position: center center;
-      filter: blur(8px) grayscale(100%) brightness(0.46);
+      filter: blur(8px) grayscale(100%) brightness(0.5);
       transform: scale(1.08);
     }
 
@@ -249,8 +246,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to right, rgba(6,6,6,0.90) 0%, rgba(6,6,6,0.58) 36%, rgba(6,6,6,0.22) 65%, rgba(6,6,6,0.52) 100%),
-        linear-gradient(to bottom, rgba(0,0,0,0.22), rgba(0,0,0,0.42));
+        linear-gradient(to right, rgba(6,6,6,0.88) 0%, rgba(6,6,6,0.54) 36%, rgba(6,6,6,0.20) 65%, rgba(6,6,6,0.46) 100%),
+        linear-gradient(to bottom, rgba(0,0,0,0.18), rgba(0,0,0,0.36));
     }
 
     .manifest-inner {
@@ -341,7 +338,7 @@
       color: rgba(243, 241, 236, 0.84);
     }
 
-    /* ================= 3 BLOCK / PRICING ================= */
+    /* ================= PRICING ================= */
 
     .pricing {
       aspect-ratio: 16 / 9;
@@ -434,7 +431,7 @@
       color: rgba(243, 241, 236, 0.48);
     }
 
-    /* ================= 4 BLOCK / SHOWREEL ================= */
+    /* ================= SHOWREEL ================= */
 
     .showreel {
       aspect-ratio: 16 / 9;
@@ -446,17 +443,18 @@
       inset: -4%;
       background-image: url('reel-bg.jpg');
       background-size: cover;
-      background-position: center;
-      filter: blur(30px) grayscale(100%) brightness(0.18);
-      transform: scale(1.14);
+      background-position: center center;
+      filter: blur(22px) grayscale(100%) brightness(0.36);
+      transform: scale(1.12);
+      opacity: 0.95;
     }
 
     .showreel-overlay {
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to bottom, rgba(0,0,0,0.58), rgba(0,0,0,0.82)),
-        linear-gradient(to right, rgba(0,0,0,0.18), rgba(0,0,0,0.18));
+        linear-gradient(to bottom, rgba(0,0,0,0.34), rgba(0,0,0,0.60)),
+        linear-gradient(to right, rgba(0,0,0,0.10), rgba(0,0,0,0.10));
     }
 
     .showreel-inner {
@@ -813,17 +811,20 @@
 
     @media (max-width: 760px) {
       .hero,
-      .manifest,
       .showreel {
         aspect-ratio: auto;
         min-height: 100svh;
+      }
+
+      .manifest {
+        aspect-ratio: auto;
+        min-height: 72svh;
       }
 
       .pricing {
         aspect-ratio: auto;
       }
 
-      .hero-line-top,
       .hero-line-bottom,
       .manifest-line-top,
       .manifest-line-left,
@@ -832,9 +833,17 @@
         display: none;
       }
 
+      .hero-line-top {
+        display: block;
+        top: 78px;
+        width: calc(100vw - 40px);
+        max-width: none;
+        background: rgba(243, 241, 236, 0.18);
+      }
+
       .hero-content {
         width: 100%;
-        padding: 28px 22px 40px;
+        padding: 92px 22px 40px;
         min-height: 100svh;
         justify-content: center;
       }
@@ -847,7 +856,7 @@
 
       .hero h1 {
         white-space: normal;
-        max-width: 280px;
+        max-width: 290px;
         font-size: clamp(34px, 14vw, 58px);
         line-height: 0.92;
         letter-spacing: 0.01em;
@@ -855,7 +864,7 @@
 
       .hero p {
         margin-top: 20px;
-        max-width: 280px;
+        max-width: 290px;
         font-size: clamp(24px, 8vw, 34px);
         line-height: 0.98;
       }
@@ -869,27 +878,29 @@
         letter-spacing: 0.14em;
       }
 
-      .manifest-frame,
-      .showreel-frame {
+      .manifest-frame {
         inset: 18px;
       }
 
       .manifest-inner {
+        width: 100%;
         padding: 22px 18px 28px;
+        min-height: 72svh;
         display: flex;
-        align-items: flex-end;
+        align-items: flex-start;
       }
 
       .manifest-text-wrap {
         position: relative;
         left: auto;
         right: auto;
-        bottom: auto;
         top: auto;
+        bottom: auto;
         transform: none;
         max-width: none;
         width: 100%;
-        padding: 0 10px 16px;
+        padding: 18px 16px 20px;
+        margin-top: 24px;
       }
 
       .manifest-kicker {
@@ -898,15 +909,24 @@
 
       .manifest-text {
         max-width: none;
-        font-size: clamp(30px, 9vw, 48px);
-        line-height: 0.98;
+        font-size: clamp(28px, 8.5vw, 44px);
+        line-height: 1.06;
       }
 
       .manifest-sub {
-        margin-top: 20px;
-        font-size: 19px;
-        line-height: 1.35;
+        margin-top: 18px;
+        font-size: 18px;
+        line-height: 1.42;
         max-width: none;
+      }
+
+      .showreel-frame {
+        inset: 18px;
+      }
+
+      .showreel-bg {
+        filter: blur(16px) grayscale(100%) brightness(0.34);
+        transform: scale(1.08);
       }
 
       .showreel-inner {
@@ -962,7 +982,6 @@
 </head>
 <body>
 
-  <!-- 1 BLOCK -->
   <section class="hero">
     <video autoplay muted loop playsinline preload="auto">
       <source src="hero-video.mp4" type="video/mp4">
@@ -979,7 +998,6 @@
     </div>
   </section>
 
-  <!-- 2 BLOCK -->
   <section class="manifest">
     <div class="manifest-bg"></div>
     <div class="manifest-overlay"></div>
@@ -1005,7 +1023,6 @@
     </div>
   </section>
 
-  <!-- 3 BLOCK -->
   <section class="pricing">
     <div class="price-column">
       <div class="price-bg" style="background-image: url('price1.jpg');"></div>
@@ -1057,7 +1074,6 @@
     </div>
   </section>
 
-  <!-- 4 BLOCK -->
   <section class="showreel">
     <div class="showreel-bg"></div>
     <div class="showreel-overlay"></div>
@@ -1118,7 +1134,6 @@
     </div>
   </section>
 
-  <!-- VIDEO MODAL -->
   <div class="video-modal" id="videoModal" aria-hidden="true">
     <div class="video-modal-backdrop" id="videoModalBackdrop"></div>
 
