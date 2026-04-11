@@ -7,8 +7,8 @@
 
   <style>
     @font-face {
-      font-family: 'TitleFont';
-      src: url('fonts/Colatemta-9Y9XB.ttf') format('truetype');
+      font-family: 'HeroNameFont';
+      src: url('fonts/KULAG-Regular.otf') format('opentype');
       font-weight: normal;
       font-style: normal;
     }
@@ -23,6 +23,13 @@
     @font-face {
       font-family: 'SubtitleFont';
       src: url('fonts/lYa.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'AccentFont';
+      src: url('fonts/Colatemta-9Y9XB.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
     }
@@ -55,6 +62,10 @@
       min-height: 100vh;
     }
 
+    body.modal-open {
+      overflow: hidden;
+    }
+
     section {
       width: 100%;
       min-height: 100vh;
@@ -66,6 +77,10 @@
     a {
       color: inherit;
       text-decoration: none;
+    }
+
+    button {
+      font: inherit;
     }
 
     /* ================= ANIMATIONS ================= */
@@ -165,19 +180,19 @@
 
     .hero h1 {
       margin: 0;
-      font-family: 'TitleFont', sans-serif;
+      font-family: 'HeroNameFont', sans-serif;
       font-weight: normal;
-      font-size: clamp(40px, 6vw, 96px);
+      font-size: clamp(44px, 6.4vw, 102px);
       line-height: 0.96;
       color: var(--orange);
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
       text-transform: none;
     }
 
     .hero p {
-      margin: 18px 0 0;
+      margin: 20px 0 0;
       color: var(--text);
-      font-size: clamp(18px, 2vw, 34px);
+      font-size: clamp(22px, 2.35vw, 38px);
       letter-spacing: 0.02em;
       font-family: 'SubtitleFont', sans-serif;
       text-transform: none;
@@ -185,7 +200,7 @@
 
     .hero-button {
       display: inline-block;
-      margin-top: 28px;
+      margin-top: 30px;
       padding: 14px 28px;
       border: 1px solid rgba(255,255,255,0.34);
       background: rgba(255,255,255,0.03);
@@ -376,7 +391,7 @@
 
     .price-name {
       margin: 0 0 12px;
-      font-family: 'TitleFont', sans-serif;
+      font-family: 'AccentFont', sans-serif;
       font-size: clamp(20px, 1.5vw, 28px);
       line-height: 1.1;
       color: var(--text);
@@ -466,7 +481,7 @@
 
     .showreel-title {
       margin: 0;
-      font-family: 'TitleFont', sans-serif;
+      font-family: 'AccentFont', sans-serif;
       font-size: clamp(30px, 3vw, 56px);
       line-height: 1;
       color: var(--text);
@@ -485,13 +500,15 @@
       border: 1px solid rgba(255,255,255,0.1);
       background: rgba(255,255,255,0.02);
       box-shadow: 0 18px 48px rgba(0,0,0,0.34);
-      transition: transform 0.25s ease, border-color 0.25s ease;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
       backdrop-filter: blur(4px);
+      cursor: pointer;
     }
 
     .video-card:hover {
       transform: translateY(-6px);
       border-color: rgba(255,255,255,0.26);
+      box-shadow: 0 24px 56px rgba(0,0,0,0.42);
     }
 
     .video-thumb {
@@ -530,6 +547,13 @@
       backdrop-filter: blur(8px);
       display: grid;
       place-items: center;
+      transition: 0.25s ease;
+    }
+
+    .video-card:hover .video-play {
+      background: rgba(255,255,255,0.14);
+      border-color: rgba(255,255,255,0.5);
+      transform: scale(1.04);
     }
 
     .video-play::before {
@@ -549,7 +573,7 @@
     }
 
     .video-name {
-      font-family: 'TitleFont', sans-serif;
+      font-family: 'AccentFont', sans-serif;
       font-size: 14px;
       line-height: 1.15;
       color: var(--text);
@@ -615,6 +639,123 @@
       background: rgba(255,255,255,0.1);
       border-color: rgba(255,255,255,0.44);
       transform: translateY(-2px);
+    }
+
+    /* ================= VIDEO MODAL ================= */
+
+    .video-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.28s ease, visibility 0.28s ease;
+    }
+
+    .video-modal.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .video-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.84);
+      backdrop-filter: blur(10px);
+    }
+
+    .video-modal-dialog {
+      position: relative;
+      z-index: 2;
+      width: min(1100px, 100%);
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(8,8,8,0.92);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+      overflow: hidden;
+    }
+
+    .video-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 3;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      backdrop-filter: blur(8px);
+      transition: 0.25s ease;
+    }
+
+    .video-modal-close:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.4);
+      transform: scale(1.04);
+    }
+
+    .video-modal-close::before,
+    .video-modal-close::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .video-modal-close::before {
+      transform: rotate(45deg);
+    }
+
+    .video-modal-close::after {
+      transform: rotate(-45deg);
+    }
+
+    .video-modal-media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+
+    .video-modal-media video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      background: #000;
+    }
+
+    .video-modal-caption {
+      padding: 18px 22px 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .video-modal-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: var(--muted);
+    }
+
+    .video-modal-title {
+      font-family: 'AccentFont', sans-serif;
+      font-size: clamp(18px, 2vw, 30px);
+      line-height: 1.05;
+      color: var(--text);
+      margin: 0;
     }
 
     /* ================= MOBILE ================= */
@@ -710,11 +851,30 @@
       }
 
       .hero h1 {
-        font-size: clamp(34px, 12vw, 56px);
+        font-size: clamp(38px, 11vw, 60px);
       }
 
       .hero p {
-        font-size: clamp(16px, 6vw, 24px);
+        font-size: clamp(18px, 6.4vw, 26px);
+      }
+
+      .video-modal {
+        padding: 12px;
+      }
+
+      .video-modal-dialog {
+        width: 100%;
+      }
+
+      .video-modal-close {
+        top: 10px;
+        right: 10px;
+        width: 42px;
+        height: 42px;
+      }
+
+      .video-modal-caption {
+        padding: 16px 16px 18px;
       }
     }
   </style>
@@ -830,7 +990,7 @@
       </div>
 
       <div class="showreel-grid">
-        <a class="video-card v1" href="#" target="_blank">
+        <a class="video-card v1 js-video-trigger" href="#" data-video="hero-video.mp4" data-title="Выпускной вечер">
           <div class="video-thumb" style="background-image: url('price1.jpg');"></div>
           <div class="video-play"></div>
           <div class="video-info">
@@ -838,7 +998,7 @@
           </div>
         </a>
 
-        <a class="video-card v2" href="#" target="_blank">
+        <a class="video-card v2 js-video-trigger" href="#" data-video="hero-video.mp4" data-title="Эмоции гостей">
           <div class="video-thumb" style="background-image: url('price2.jpg');"></div>
           <div class="video-play"></div>
           <div class="video-info">
@@ -846,7 +1006,7 @@
           </div>
         </a>
 
-        <a class="video-card v3" href="#" target="_blank">
+        <a class="video-card v3 js-video-trigger" href="#" data-video="hero-video.mp4" data-title="Ночной репортаж">
           <div class="video-thumb" style="background-image: url('price3.jpg');"></div>
           <div class="video-play"></div>
           <div class="video-info">
@@ -854,7 +1014,7 @@
           </div>
         </a>
 
-        <a class="video-card h1" href="#" target="_blank">
+        <a class="video-card h1 js-video-trigger" href="#" data-video="hero-video.mp4" data-title="Фильм о выпускных">
           <div class="video-thumb" style="background-image: url('grad-bg.jpg');"></div>
           <div class="video-play"></div>
           <div class="video-info">
@@ -862,7 +1022,7 @@
           </div>
         </a>
 
-        <a class="video-card h2" href="#" target="_blank">
+        <a class="video-card h2 js-video-trigger" href="#" data-video="hero-video.mp4" data-title="Лучшие моменты">
           <div class="video-thumb" style="background-image: url('price2.jpg');"></div>
           <div class="video-play"></div>
           <div class="video-info">
@@ -875,6 +1035,85 @@
         <a class="cta-button" href="https://t.me/samotkanov_pavel" target="_blank">Записаться на съёмку</a>
       </div>
     </div>
+  </section>
+
+  <!-- VIDEO MODAL -->
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <div class="video-modal-backdrop" id="videoModalBackdrop"></div>
+
+    <div class="video-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+      <button class="video-modal-close" id="videoModalClose" aria-label="Закрыть видео"></button>
+
+      <div class="video-modal-media">
+        <video id="modalVideo" controls playsinline preload="metadata">
+          <source id="modalVideoSource" src="" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="video-modal-caption">
+        <div class="video-modal-label">Showreel</div>
+        <h3 class="video-modal-title" id="videoModalTitle">Видео</h3>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('videoModal');
+    const modalBackdrop = document.getElementById('videoModalBackdrop');
+    const modalClose = document.getElementById('videoModalClose');
+    const modalVideo = document.getElementById('modalVideo');
+    const modalVideoSource = document.getElementById('modalVideoSource');
+    const modalTitle = document.getElementById('videoModalTitle');
+    const videoTriggers = document.querySelectorAll('.js-video-trigger');
+
+    function openVideoModal(videoSrc, titleText) {
+      modalVideo.pause();
+      modalVideoSource.src = videoSrc;
+      modalTitle.textContent = titleText || 'Видео';
+      modalVideo.load();
+
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+
+      const playPromise = modalVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+    }
+
+    function closeVideoModal() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+
+      modalVideo.pause();
+      modalVideo.currentTime = 0;
+      modalVideoSource.src = '';
+      modalVideo.load();
+    }
+
+    videoTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', (event) => {
+        event.preventDefault();
+        const videoSrc = trigger.dataset.video;
+        const titleText = trigger.dataset.title;
+        openVideoModal(videoSrc, titleText);
+      });
+    });
+
+    modalClose.addEventListener('click', closeVideoModal);
+    modalBackdrop.addEventListener('click', closeVideoModal);
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+        closeVideoModal();
+      }
+    });
+  </script>
+
+</body>
+</html>
   </section>
 
 </body>
