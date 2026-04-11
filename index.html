@@ -14,21 +14,21 @@
     }
 
     @font-face {
-      font-family: 'SouthGhettoFont';
+      font-family: 'AccentDisplayFont';
       src: url('fonts/SOUTHGHETTO.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
     }
 
     @font-face {
-      font-family: 'SexsmithFont';
+      font-family: 'EditorialFont';
       src: url('fonts/Sexsmith.otf') format('opentype');
       font-weight: normal;
       font-style: normal;
     }
 
     @font-face {
-      font-family: 'GatchinaFont';
+      font-family: 'BodySerifFont';
       src: url('fonts/Gatchina Regular.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
@@ -36,15 +36,16 @@
 
     :root {
       --bg: #070707;
-      --bg-soft: #0a0a0a;
+      --surface: #0a0a0a;
       --text: #f3f1ec;
       --muted: rgba(243, 241, 236, 0.68);
-      --line: rgba(243, 241, 236, 0.12);
+      --line: rgba(243, 241, 236, 0.14);
       --line-strong: rgba(243, 241, 236, 0.22);
       --orange: #c97a2d;
-      --orange-deep: #a5601f;
-      --wine: #8b2137;
-      --shadow: 0 18px 48px rgba(0,0,0,0.34);
+      --orange-deep: #a55f1c;
+      --wine: #7d1f31;
+      --overlay-dark: rgba(0, 0, 0, 0.58);
+      --card-border: rgba(255,255,255,0.10);
     }
 
     * {
@@ -74,7 +75,7 @@
       min-height: 100vh;
       position: relative;
       overflow: hidden;
-      background: var(--bg-soft);
+      background: var(--surface);
     }
 
     a {
@@ -117,6 +118,42 @@
     .delay-3 { animation-delay: 0.55s; }
     .delay-4 { animation-delay: 0.75s; }
 
+    /* ================= SHARED UI ================= */
+
+    .ui-button {
+      display: inline-block;
+      padding: 16px 32px;
+      border: 1px solid rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      transition: 0.25s ease;
+      backdrop-filter: blur(8px);
+      text-align: center;
+    }
+
+    .ui-button:hover {
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(255,255,255,0.44);
+      transform: translateY(-2px);
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      color: var(--muted);
+    }
+
+    .frame {
+      position: absolute;
+      inset: 28px;
+      border: 1px solid rgba(255,255,255,0.07);
+      pointer-events: none;
+    }
+
     /* ================= HERO ================= */
 
     .hero {
@@ -140,8 +177,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to bottom, rgba(0,0,0,0.24), rgba(0,0,0,0.72)),
-        linear-gradient(to right, rgba(0,0,0,0.15), rgba(0,0,0,0.15));
+        linear-gradient(to bottom, rgba(0,0,0,0.22), rgba(0,0,0,0.68)),
+        linear-gradient(to right, rgba(0,0,0,0.14), rgba(0,0,0,0.14));
       z-index: 1;
     }
 
@@ -183,10 +220,10 @@
       max-width: 100%;
       font-family: 'HeroNameFont', sans-serif;
       font-weight: normal;
-      font-size: clamp(54px, 6vw, 106px);
+      font-size: clamp(54px, 6vw, 108px);
       line-height: 0.9;
       color: var(--orange-deep);
-      letter-spacing: 0.015em;
+      letter-spacing: 0.02em;
       text-transform: uppercase;
       text-align: center;
       white-space: nowrap;
@@ -194,39 +231,20 @@
     }
 
     .hero p {
-      margin: 24px 0 0;
+      margin: 22px 0 0;
       color: var(--text);
-      font-size: clamp(32px, 3vw, 54px);
+      font-size: clamp(28px, 2.9vw, 54px);
       line-height: 0.98;
       letter-spacing: 0.01em;
-      font-family: 'SouthGhettoFont', sans-serif;
+      font-family: 'AccentDisplayFont', sans-serif;
       text-align: center;
       text-transform: none;
-    }
-
-    .hero-button,
-    .cta-button {
-      display: inline-block;
-      padding: 15px 30px;
-      border: 1px solid rgba(255,255,255,0.28);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      text-transform: uppercase;
-      font-size: 12px;
-      letter-spacing: 0.16em;
-      transition: 0.25s ease;
-      backdrop-filter: blur(8px);
+      max-width: 760px;
     }
 
     .hero-button {
-      margin-top: 34px;
-    }
-
-    .hero-button:hover,
-    .cta-button:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: rgba(255,255,255,0.44);
-      transform: translateY(-2px);
+      margin-top: 30px;
+      min-width: 220px;
     }
 
     /* ================= MANIFEST ================= */
@@ -242,7 +260,7 @@
       background-image: url('grad-bg.jpg');
       background-size: cover;
       background-position: center center;
-      filter: blur(8px) grayscale(100%) brightness(0.5);
+      filter: blur(8px) grayscale(100%) brightness(0.50);
       transform: scale(1.08);
     }
 
@@ -250,7 +268,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to right, rgba(6,6,6,0.88) 0%, rgba(6,6,6,0.56) 36%, rgba(6,6,6,0.22) 65%, rgba(6,6,6,0.48) 100%),
+        linear-gradient(to right, rgba(6,6,6,0.88) 0%, rgba(6,6,6,0.54) 36%, rgba(6,6,6,0.20) 65%, rgba(6,6,6,0.46) 100%),
         linear-gradient(to bottom, rgba(0,0,0,0.18), rgba(0,0,0,0.36));
     }
 
@@ -317,26 +335,23 @@
 
     .manifest-kicker {
       margin-bottom: 18px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.28em;
-      color: var(--muted);
     }
 
     .manifest-text {
       margin: 0;
-      font-family: 'SexsmithFont', sans-serif;
+      font-family: 'EditorialFont', sans-serif;
       font-weight: normal;
-      font-size: clamp(42px, 4.2vw, 74px);
+      font-size: clamp(34px, 4vw, 70px);
       line-height: 1.02;
       max-width: 11ch;
       color: var(--wine);
+      letter-spacing: 0.01em;
     }
 
     .manifest-sub {
-      margin-top: 28px;
+      margin-top: 30px;
       max-width: 560px;
-      font-family: 'GatchinaFont', sans-serif;
+      font-family: 'BodySerifFont', serif;
       font-size: 24px;
       line-height: 1.46;
       color: rgba(243, 241, 236, 0.84);
@@ -388,7 +403,7 @@
       z-index: 2;
       width: 100%;
       max-width: 360px;
-      padding: 36px 24px;
+      padding: 38px 24px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -402,12 +417,13 @@
     }
 
     .price-name {
-      margin: 0 0 12px;
+      margin: 0 0 14px;
       font-family: 'HeroNameFont', sans-serif;
       font-size: clamp(24px, 1.8vw, 34px);
       line-height: 1;
       color: var(--text);
       text-transform: uppercase;
+      letter-spacing: 0.02em;
     }
 
     .price-value {
@@ -421,7 +437,7 @@
       display: grid;
       gap: 10px;
       color: rgba(243, 241, 236, 0.86);
-      font-family: 'GatchinaFont', sans-serif;
+      font-family: 'BodySerifFont', serif;
       font-size: 20px;
       line-height: 1.42;
       justify-items: center;
@@ -486,10 +502,6 @@
     }
 
     .showreel-kicker {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.28em;
-      color: var(--muted);
       margin-bottom: 14px;
       text-align: center;
     }
@@ -502,6 +514,7 @@
       color: var(--text);
       text-align: center;
       text-transform: uppercase;
+      letter-spacing: 0.02em;
     }
 
     .showreel-grid {
@@ -513,9 +526,9 @@
     .video-card {
       position: absolute;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid var(--card-border);
       background: rgba(255,255,255,0.02);
-      box-shadow: var(--shadow);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.34);
       transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
       backdrop-filter: blur(4px);
       cursor: pointer;
@@ -594,6 +607,7 @@
       line-height: 1.15;
       color: var(--text);
       text-transform: uppercase;
+      letter-spacing: 0.02em;
     }
 
     .v1 {
@@ -639,7 +653,11 @@
       justify-content: center;
     }
 
-    /* ================= MODAL ================= */
+    .cta-button {
+      min-width: 280px;
+    }
+
+    /* ================= VIDEO MODAL ================= */
 
     .video-modal {
       position: fixed;
@@ -767,7 +785,7 @@
       }
 
       .price-column {
-        min-height: 62vh;
+        min-height: 60vh;
         border-left: none;
         border-top: 1px solid rgba(255,255,255,0.08);
       }
@@ -804,11 +822,7 @@
         aspect-ratio: auto;
       }
 
-      .manifest {
-        min-height: auto;
-        aspect-ratio: auto;
-      }
-
+      .manifest,
       .pricing,
       .showreel {
         aspect-ratio: auto;
@@ -824,56 +838,60 @@
 
       .hero-line-top {
         display: block;
-        top: 78px;
-        width: calc(100vw - 40px);
+        top: 76px;
+        width: calc(100vw - 42px);
         max-width: none;
         background: rgba(243, 241, 236, 0.18);
       }
 
       .hero-content {
         width: 100%;
-        padding: 96px 22px 42px;
         min-height: 100svh;
+        padding: 96px 22px 40px;
         justify-content: center;
       }
 
       .hero-kicker {
         margin-bottom: 18px;
         font-size: 10px;
-        letter-spacing: 0.28em;
+        letter-spacing: 0.26em;
       }
 
       .hero h1 {
         white-space: normal;
         max-width: 300px;
-        font-size: clamp(34px, 14vw, 58px);
+        font-size: clamp(34px, 13vw, 56px);
         line-height: 0.92;
         letter-spacing: 0.01em;
       }
 
       .hero p {
-        margin-top: 18px;
+        margin-top: 16px;
         max-width: 300px;
-        font-size: clamp(28px, 9.5vw, 40px);
+        font-size: clamp(24px, 8.5vw, 36px);
         line-height: 0.95;
       }
 
       .hero-button {
-        margin-top: 26px;
+        margin-top: 24px;
         width: min(320px, 100%);
-        text-align: center;
+        min-width: 0;
         padding: 18px 18px;
         font-size: 12px;
         letter-spacing: 0.14em;
       }
 
+      .manifest {
+        min-height: auto;
+      }
+
       .manifest-frame {
-        inset: 16px;
+        inset: 18px;
       }
 
       .manifest-inner {
         width: 100%;
-        padding: 24px 16px 30px;
+        padding: 24px 18px 28px;
         min-height: auto;
         display: block;
       }
@@ -881,14 +899,12 @@
       .manifest-text-wrap {
         position: relative;
         left: auto;
-        right: auto;
         top: auto;
-        bottom: auto;
         transform: none;
         max-width: none;
         width: 100%;
-        padding: 22px 18px 26px;
-        margin-top: 18px;
+        padding: 18px 16px 20px;
+        margin-top: 22px;
       }
 
       .manifest-kicker {
@@ -897,30 +913,19 @@
 
       .manifest-text {
         max-width: none;
-        font-size: clamp(32px, 9vw, 44px);
-        line-height: 1.02;
+        font-size: clamp(24px, 8vw, 38px);
+        line-height: 1.08;
       }
 
       .manifest-sub {
         margin-top: 18px;
-        font-size: 20px;
+        font-size: 19px;
         line-height: 1.42;
         max-width: none;
       }
 
-      .pricing {
-        display: grid;
-        grid-template-columns: 1fr;
-      }
-
       .price-column {
-        min-height: 52svh;
-        border-left: none;
-        border-top: 1px solid rgba(255,255,255,0.08);
-      }
-
-      .price-column:first-child {
-        border-top: none;
+        min-height: auto;
       }
 
       .price-inner {
@@ -942,7 +947,7 @@
       }
 
       .showreel-frame {
-        inset: 16px;
+        inset: 18px;
       }
 
       .showreel-bg {
@@ -951,29 +956,15 @@
       }
 
       .showreel-inner {
-        padding: 28px 16px 24px;
-      }
-
-      .showreel-head {
-        margin-bottom: 20px;
-      }
-
-      .showreel-title {
-        font-size: clamp(28px, 8vw, 42px);
+        padding: 28px 18px 24px;
       }
 
       .showreel-grid {
-        display: grid;
         grid-template-columns: 1fr;
-        gap: 14px;
-        min-height: 0;
       }
 
       .video-card {
-        position: relative;
-        inset: auto !important;
-        width: 100% !important;
-        height: 220px !important;
+        height: 240px !important;
       }
 
       .showreel-cta {
@@ -982,8 +973,7 @@
 
       .cta-button {
         width: min(320px, 100%);
-        text-align: center;
-        padding: 18px 18px;
+        min-width: 0;
       }
 
       .video-modal {
@@ -1014,4 +1004,226 @@
       <source src="hero-video.mp4" type="video/mp4">
     </video>
 
-    <
+    <div class="hero-line-top"></div>
+    <div class="hero-line-bottom"></div>
+
+    <div class="hero-content">
+      <div class="hero-kicker animate-up">Graduation Films</div>
+      <h1 class="animate-up delay-1">САМОТКАНОВ ПАВЕЛ</h1>
+      <p class="animate-up delay-2">Видеосъёмка выпускных</p>
+      <a href="https://t.me/samotkanov_pavel" target="_blank" class="ui-button hero-button animate-up delay-3">Забронировать</a>
+    </div>
+  </section>
+
+  <section class="manifest">
+    <div class="manifest-bg"></div>
+    <div class="manifest-overlay"></div>
+
+    <div class="manifest-inner">
+      <div class="manifest-frame"></div>
+      <div class="manifest-line-top"></div>
+      <div class="manifest-line-left"></div>
+      <div class="manifest-line-bottom"></div>
+      <div class="manifest-meta animate-soft delay-1">Editorial Block / 01</div>
+
+      <div class="manifest-text-wrap">
+        <div class="manifest-kicker section-kicker animate-up">Manifest</div>
+        <h2 class="manifest-text animate-up delay-1">
+          Я снимаю не выпускной<br>
+          Я снимаю момент,<br>
+          который больше не повторится
+        </h2>
+        <div class="manifest-sub animate-up delay-2">
+          Не просто праздник, а живые эмоции и воспоминание, к которому захочется возвращаться снова.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing">
+    <div class="price-column">
+      <div class="price-bg" style="background-image: url('price1.jpg');"></div>
+      <div class="price-dark"></div>
+      <div class="price-inner">
+        <div class="price-topline"></div>
+        <h3 class="price-name animate-up">Базовый</h3>
+        <div class="price-value animate-up delay-1">30 000</div>
+        <div class="price-list animate-up delay-2">
+          <div>4 часа съёмки</div>
+          <div>Фильм 3–5 минут</div>
+          <div>Передача исходников</div>
+        </div>
+        <div class="price-ready animate-up delay-3">Готовность — 10 дней</div>
+      </div>
+    </div>
+
+    <div class="price-column">
+      <div class="price-bg" style="background-image: url('price2.jpg');"></div>
+      <div class="price-dark"></div>
+      <div class="price-inner">
+        <div class="price-topline"></div>
+        <h3 class="price-name animate-up">Стандарт</h3>
+        <div class="price-value animate-up delay-1">40 000</div>
+        <div class="price-list animate-up delay-2">
+          <div>4 часа съёмки</div>
+          <div>Фильм 4–7 минут</div>
+          <div>5–10 коротких роликов для соцсетей</div>
+        </div>
+        <div class="price-ready animate-up delay-3">Готовность — 10 дней</div>
+      </div>
+    </div>
+
+    <div class="price-column">
+      <div class="price-bg" style="background-image: url('price3.jpg');"></div>
+      <div class="price-dark"></div>
+      <div class="price-inner">
+        <div class="price-topline"></div>
+        <h3 class="price-name animate-up">Премиум</h3>
+        <div class="price-value animate-up delay-1">50 000</div>
+        <div class="price-list animate-up delay-2">
+          <div>Съёмка всего мероприятия</div>
+          <div>Фильм до 10 минут</div>
+          <div>10–15 роликов для соцсетей</div>
+          <div>Интервью</div>
+        </div>
+        <div class="price-ready animate-up delay-3">Готовность — 10 дней</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="showreel">
+    <div class="showreel-bg"></div>
+    <div class="showreel-overlay"></div>
+
+    <div class="showreel-inner">
+      <div class="showreel-frame"></div>
+
+      <div class="showreel-head">
+        <div class="showreel-kicker section-kicker animate-up">Showreel</div>
+        <h2 class="showreel-title animate-up delay-1">ВАША ИСТОРИЯ ВПЕРЕДИ</h2>
+      </div>
+
+      <div class="showreel-grid">
+        <a class="video-card v1 js-video-trigger" href="#" data-video="hero-video.mp4" data-title="Выпускной вечер">
+          <div class="video-thumb" style="background-image: url('price1.jpg');"></div>
+          <div class="video-play"></div>
+          <div class="video-info">
+            <div class="video-name">Выпускной вечер</div>
+          </div>
+        </a>
+
+        <a class="video-card v2 js-video-trigger" href="#" data-video="hero-video.mp4" data-title="Эмоции гостей">
+          <div class="video-thumb" style="background-image: url('price2.jpg');"></div>
+          <div class="video-play"></div>
+          <div class="video-info">
+            <div class="video-name">Эмоции гостей</div>
+          </div>
+        </a>
+
+        <a class="video-card v3 js-video-trigger" href="#" data-video="hero-video.mp4" data-title="Ночной репортаж">
+          <div class="video-thumb" style="background-image: url('price3.jpg');"></div>
+          <div class="video-play"></div>
+          <div class="video-info">
+            <div class="video-name">Ночной репортаж</div>
+          </div>
+        </a>
+
+        <a class="video-card h1 js-video-trigger" href="#" data-video="hero-video.mp4" data-title="Фильм о выпускных">
+          <div class="video-thumb" style="background-image: url('grad-bg.jpg');"></div>
+          <div class="video-play"></div>
+          <div class="video-info">
+            <div class="video-name">Фильм о выпускных</div>
+          </div>
+        </a>
+
+        <a class="video-card h2 js-video-trigger" href="#" data-video="hero-video.mp4" data-title="Лучшие моменты">
+          <div class="video-thumb" style="background-image: url('price2.jpg');"></div>
+          <div class="video-play"></div>
+          <div class="video-info">
+            <div class="video-name">Лучшие моменты</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="showreel-cta animate-up delay-2">
+        <a class="ui-button cta-button" href="https://t.me/samotkanov_pavel" target="_blank">Записаться на съёмку</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <div class="video-modal-backdrop" id="videoModalBackdrop"></div>
+
+    <div class="video-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+      <button class="video-modal-close" id="videoModalClose" aria-label="Закрыть видео"></button>
+
+      <div class="video-modal-media">
+        <video id="modalVideo" controls playsinline preload="metadata">
+          <source id="modalVideoSource" src="" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="video-modal-caption">
+        <div class="video-modal-label">Showreel</div>
+        <h3 class="video-modal-title" id="videoModalTitle">Видео</h3>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('videoModal');
+    const modalBackdrop = document.getElementById('videoModalBackdrop');
+    const modalClose = document.getElementById('videoModalClose');
+    const modalVideo = document.getElementById('modalVideo');
+    const modalVideoSource = document.getElementById('modalVideoSource');
+    const modalTitle = document.getElementById('videoModalTitle');
+    const videoTriggers = document.querySelectorAll('.js-video-trigger');
+
+    function openVideoModal(videoSrc, titleText) {
+      modalVideo.pause();
+      modalVideoSource.src = videoSrc;
+      modalTitle.textContent = titleText || 'Видео';
+      modalVideo.load();
+
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+
+      const playPromise = modalVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+    }
+
+    function closeVideoModal() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+
+      modalVideo.pause();
+      modalVideo.currentTime = 0;
+      modalVideoSource.src = '';
+      modalVideo.load();
+    }
+
+    videoTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', (event) => {
+        event.preventDefault();
+        const videoSrc = trigger.dataset.video;
+        const titleText = trigger.dataset.title;
+        openVideoModal(videoSrc, titleText);
+      });
+    });
+
+    modalClose.addEventListener('click', closeVideoModal);
+    modalBackdrop.addEventListener('click', closeVideoModal);
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+        closeVideoModal();
+      }
+    });
+  </script>
+
+</body>
+</html>
