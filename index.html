@@ -28,8 +28,8 @@
     }
 
     @font-face {
-      font-family: 'AccentFont';
-      src: url('fonts/Colatemta-9Y9XB.ttf') format('truetype');
+      font-family: 'GatchinaFont';
+      src: url('fonts/Gatchina Regular.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
     }
@@ -41,6 +41,7 @@
       --line: rgba(243, 241, 236, 0.14);
       --line-strong: rgba(243, 241, 236, 0.22);
       --orange: #c97a2d;
+      --orange-deep: #a55f1c;
       --wine: #7d1f31;
     }
 
@@ -143,8 +144,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to bottom, rgba(0,0,0,0.30), rgba(0,0,0,0.65)),
-        linear-gradient(to right, rgba(0,0,0,0.18), rgba(0,0,0,0.18));
+        linear-gradient(to bottom, rgba(0,0,0,0.34), rgba(0,0,0,0.74)),
+        linear-gradient(to right, rgba(0,0,0,0.22), rgba(0,0,0,0.22));
       z-index: 1;
     }
 
@@ -168,6 +169,9 @@
       width: min(1200px, 92vw);
       padding: 4vw;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .hero-kicker {
@@ -175,32 +179,38 @@
       letter-spacing: 0.35em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 20px;
+      margin-bottom: 28px;
     }
 
     .hero h1 {
       margin: 0;
+      max-width: 100%;
       font-family: 'HeroNameFont', sans-serif;
       font-weight: normal;
-      font-size: clamp(44px, 6.4vw, 102px);
-      line-height: 0.96;
-      color: var(--orange);
-      letter-spacing: 0.01em;
-      text-transform: none;
+      font-size: clamp(52px, 6vw, 106px);
+      line-height: 0.9;
+      color: var(--orange-deep);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      text-align: center;
+      white-space: nowrap;
+      text-shadow: 0 0 20px rgba(0,0,0,0.24);
     }
 
     .hero p {
-      margin: 20px 0 0;
+      margin: 28px 0 0;
       color: var(--text);
-      font-size: clamp(22px, 2.35vw, 38px);
-      letter-spacing: 0.02em;
+      font-size: clamp(24px, 2.7vw, 46px);
+      letter-spacing: 0.01em;
+      line-height: 1.05;
       font-family: 'SubtitleFont', sans-serif;
       text-transform: none;
+      text-align: center;
     }
 
     .hero-button {
       display: inline-block;
-      margin-top: 30px;
+      margin-top: 34px;
       padding: 14px 28px;
       border: 1px solid rgba(255,255,255,0.34);
       background: rgba(255,255,255,0.03);
@@ -231,16 +241,16 @@
       background-image: url('grad-bg.jpg');
       background-size: cover;
       background-position: center center;
-      filter: blur(6px) grayscale(100%) brightness(0.52);
-      transform: scale(1.06);
+      filter: blur(8px) grayscale(100%) brightness(0.46);
+      transform: scale(1.08);
     }
 
     .manifest-overlay {
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to right, rgba(6,6,6,0.88) 0%, rgba(6,6,6,0.56) 36%, rgba(6,6,6,0.18) 65%, rgba(6,6,6,0.50) 100%),
-        linear-gradient(to bottom, rgba(0,0,0,0.22), rgba(0,0,0,0.34));
+        linear-gradient(to right, rgba(6,6,6,0.90) 0%, rgba(6,6,6,0.58) 36%, rgba(6,6,6,0.22) 65%, rgba(6,6,6,0.52) 100%),
+        linear-gradient(to bottom, rgba(0,0,0,0.22), rgba(0,0,0,0.42));
     }
 
     .manifest-inner {
@@ -318,16 +328,17 @@
       font-weight: normal;
       font-size: clamp(36px, 4.2vw, 72px);
       line-height: 1.02;
-      max-width: 10.5ch;
+      max-width: 11ch;
       color: var(--wine);
     }
 
     .manifest-sub {
-      margin-top: 26px;
-      max-width: 460px;
-      font-size: 14px;
-      line-height: 1.65;
-      color: rgba(243, 241, 236, 0.66);
+      margin-top: 28px;
+      max-width: 540px;
+      font-family: 'GatchinaFont', sans-serif;
+      font-size: 22px;
+      line-height: 1.45;
+      color: rgba(243, 241, 236, 0.84);
     }
 
     /* ================= 3 BLOCK / PRICING ================= */
@@ -360,7 +371,7 @@
       inset: -2%;
       background-size: cover;
       background-position: center;
-      filter: blur(4px) grayscale(100%) brightness(0.48);
+      filter: blur(5px) grayscale(100%) brightness(0.48);
       transform: scale(1.08);
     }
 
@@ -391,10 +402,11 @@
 
     .price-name {
       margin: 0 0 12px;
-      font-family: 'AccentFont', sans-serif;
-      font-size: clamp(20px, 1.5vw, 28px);
-      line-height: 1.1;
+      font-family: 'HeroNameFont', sans-serif;
+      font-size: clamp(24px, 1.8vw, 34px);
+      line-height: 1;
       color: var(--text);
+      text-transform: uppercase;
     }
 
     .price-value {
@@ -407,9 +419,10 @@
     .price-list {
       display: grid;
       gap: 10px;
-      color: rgba(243, 241, 236, 0.78);
-      font-size: 15px;
-      line-height: 1.45;
+      color: rgba(243, 241, 236, 0.86);
+      font-family: 'GatchinaFont', sans-serif;
+      font-size: 20px;
+      line-height: 1.4;
       justify-items: center;
     }
 
@@ -434,7 +447,7 @@
       background-image: url('reel-bg.jpg');
       background-size: cover;
       background-position: center;
-      filter: blur(28px) grayscale(100%) brightness(0.18);
+      filter: blur(30px) grayscale(100%) brightness(0.18);
       transform: scale(1.14);
     }
 
@@ -442,7 +455,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to bottom, rgba(0,0,0,0.58), rgba(0,0,0,0.80)),
+        linear-gradient(to bottom, rgba(0,0,0,0.58), rgba(0,0,0,0.82)),
         linear-gradient(to right, rgba(0,0,0,0.18), rgba(0,0,0,0.18));
     }
 
@@ -481,11 +494,12 @@
 
     .showreel-title {
       margin: 0;
-      font-family: 'AccentFont', sans-serif;
+      font-family: 'HeroNameFont', sans-serif;
       font-size: clamp(30px, 3vw, 56px);
       line-height: 1;
       color: var(--text);
       text-align: center;
+      text-transform: uppercase;
     }
 
     .showreel-grid {
@@ -573,10 +587,11 @@
     }
 
     .video-name {
-      font-family: 'AccentFont', sans-serif;
+      font-family: 'HeroNameFont', sans-serif;
       font-size: 14px;
       line-height: 1.15;
       color: var(--text);
+      text-transform: uppercase;
     }
 
     .v1 {
@@ -751,14 +766,15 @@
     }
 
     .video-modal-title {
-      font-family: 'AccentFont', sans-serif;
+      font-family: 'HeroNameFont', sans-serif;
       font-size: clamp(18px, 2vw, 30px);
       line-height: 1.05;
       color: var(--text);
       margin: 0;
+      text-transform: uppercase;
     }
 
-    /* ================= MOBILE ================= */
+    /* ================= TABLET ================= */
 
     @media (max-width: 1100px) {
       .pricing {
@@ -793,6 +809,8 @@
       }
     }
 
+    /* ================= MOBILE ================= */
+
     @media (max-width: 760px) {
       .hero,
       .manifest,
@@ -814,24 +832,81 @@
         display: none;
       }
 
+      .hero-content {
+        width: 100%;
+        padding: 28px 22px 40px;
+        min-height: 100svh;
+        justify-content: center;
+      }
+
+      .hero-kicker {
+        margin-bottom: 22px;
+        font-size: 10px;
+        letter-spacing: 0.28em;
+      }
+
+      .hero h1 {
+        white-space: normal;
+        max-width: 280px;
+        font-size: clamp(34px, 14vw, 58px);
+        line-height: 0.92;
+        letter-spacing: 0.01em;
+      }
+
+      .hero p {
+        margin-top: 20px;
+        max-width: 280px;
+        font-size: clamp(24px, 8vw, 34px);
+        line-height: 0.98;
+      }
+
+      .hero-button {
+        margin-top: 26px;
+        width: min(300px, 100%);
+        text-align: center;
+        padding: 18px 18px;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+      }
+
       .manifest-frame,
       .showreel-frame {
         inset: 18px;
       }
 
+      .manifest-inner {
+        padding: 22px 18px 28px;
+        display: flex;
+        align-items: flex-end;
+      }
+
       .manifest-text-wrap {
-        position: absolute;
-        left: 24px;
-        right: 24px;
-        bottom: 38px;
+        position: relative;
+        left: auto;
+        right: auto;
+        bottom: auto;
         top: auto;
         transform: none;
         max-width: none;
+        width: 100%;
+        padding: 0 10px 16px;
+      }
+
+      .manifest-kicker {
+        margin-bottom: 14px;
       }
 
       .manifest-text {
         max-width: none;
-        font-size: clamp(34px, 9vw, 52px);
+        font-size: clamp(30px, 9vw, 48px);
+        line-height: 0.98;
+      }
+
+      .manifest-sub {
+        margin-top: 20px;
+        font-size: 19px;
+        line-height: 1.35;
+        max-width: none;
       }
 
       .showreel-inner {
@@ -850,12 +925,18 @@
         margin-top: 16px;
       }
 
-      .hero h1 {
-        font-size: clamp(38px, 11vw, 60px);
+      .price-inner {
+        max-width: 420px;
+        padding: 42px 22px;
       }
 
-      .hero p {
-        font-size: clamp(18px, 6.4vw, 26px);
+      .price-name {
+        font-size: clamp(28px, 8vw, 38px);
+      }
+
+      .price-list {
+        font-size: 21px;
+        line-height: 1.38;
       }
 
       .video-modal {
@@ -892,7 +973,7 @@
 
     <div class="hero-content">
       <div class="hero-kicker animate-up">Graduation Films</div>
-      <h1 class="animate-up delay-1">Самотканов Павел</h1>
+      <h1 class="animate-up delay-1">САМОТКАНОВ ПАВЕЛ</h1>
       <p class="animate-up delay-2">Видеосъёмка выпускных</p>
       <a href="https://t.me/samotkanov_pavel" target="_blank" class="hero-button animate-up delay-3">Забронировать</a>
     </div>
@@ -914,11 +995,11 @@
         <div class="manifest-kicker animate-up">Manifest</div>
         <h2 class="manifest-text animate-up delay-1">
           Я снимаю не выпускной<br>
-          Я снимаю момент<br>
+          Я снимаю момент,<br>
           который больше не повторится
         </h2>
         <div class="manifest-sub animate-up delay-2">
-          Не просто событие, а состояние, эмоцию и ту самую секунду, к которой захочется возвращаться спустя годы.
+          Не просто праздник, а живые эмоции и воспоминание, к которому захочется возвращаться снова.
         </div>
       </div>
     </div>
@@ -1111,10 +1192,6 @@
       }
     });
   </script>
-
-</body>
-</html>
-  </section>
 
 </body>
 </html>
