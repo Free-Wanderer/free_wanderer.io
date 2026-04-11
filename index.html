@@ -14,15 +14,15 @@
     }
 
     @font-face {
-      font-family: 'ManifestFont';
-      src: url('fonts/Horovod-Regular.otf') format('opentype');
+      font-family: 'SubtitleHeroFont';
+      src: url('fonts/Sexsmith.otf') format('opentype');
       font-weight: normal;
       font-style: normal;
     }
 
     @font-face {
-      font-family: 'SubtitleFont';
-      src: url('fonts/lYa.otf') format('opentype');
+      font-family: 'ManifestArtFont';
+      src: url('fonts/SOUTHGHETTO.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
     }
@@ -196,13 +196,14 @@
     }
 
     .hero p {
-      margin: 28px 0 0;
+      margin: 26px 0 0;
       color: var(--text);
-      font-size: clamp(24px, 2.7vw, 46px);
+      font-size: clamp(30px, 3vw, 54px);
       letter-spacing: 0.01em;
-      line-height: 1.05;
-      font-family: 'SubtitleFont', sans-serif;
+      line-height: 1;
+      font-family: 'SubtitleHeroFont', sans-serif;
       text-align: center;
+      text-transform: none;
     }
 
     .hero-button {
@@ -321,9 +322,9 @@
 
     .manifest-text {
       margin: 0;
-      font-family: 'ManifestFont', sans-serif;
+      font-family: 'ManifestArtFont', sans-serif;
       font-weight: normal;
-      font-size: clamp(36px, 4.2vw, 72px);
+      font-size: clamp(34px, 4vw, 70px);
       line-height: 1.02;
       max-width: 11ch;
       color: var(--wine);
@@ -331,9 +332,9 @@
 
     .manifest-sub {
       margin-top: 28px;
-      max-width: 540px;
+      max-width: 560px;
       font-family: 'GatchinaFont', sans-serif;
-      font-size: 22px;
+      font-size: 24px;
       line-height: 1.45;
       color: rgba(243, 241, 236, 0.84);
     }
@@ -863,10 +864,10 @@
       }
 
       .hero p {
-        margin-top: 20px;
+        margin-top: 18px;
         max-width: 290px;
-        font-size: clamp(24px, 8vw, 34px);
-        line-height: 0.98;
+        font-size: clamp(30px, 10vw, 40px);
+        line-height: 0.95;
       }
 
       .hero-button {
@@ -909,13 +910,13 @@
 
       .manifest-text {
         max-width: none;
-        font-size: clamp(28px, 8.5vw, 44px);
+        font-size: clamp(28px, 8.6vw, 42px);
         line-height: 1.06;
       }
 
       .manifest-sub {
         margin-top: 18px;
-        font-size: 18px;
+        font-size: 20px;
         line-height: 1.42;
         max-width: none;
       }
